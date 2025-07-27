@@ -1,5 +1,20 @@
 {% extends "base.html" %}
+
+{% block title %}Inicio{% endblock %}
+
 {% block content %}
-<h2>Página de inicio</h2>
-<p>Hola, {{ user.username }}. Ya estás logueado.</p>
+<div class="text-center py-5">
+  <h1 class="display-4 mb-3">¡Bienvenido a Mi Ecommerce!</h1>
+
+  <p class="lead">Hola, <strong>{{ user.username }}</strong>. Ya estás logueado.</p>
+
+  <div class="mt-4">
+    <a href="/productos/" class="btn btn-primary btn-lg me-3">
+      Ver productos
+    </a>
+    <a href="/carrito/" class="btn btn-outline-secondary btn-lg">
+      Ir al carrito
+    </a>
+  </div>
+</div>
 {% endblock %}

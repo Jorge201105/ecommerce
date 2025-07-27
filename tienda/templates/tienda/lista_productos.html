@@ -1,18 +1,24 @@
-{% extends "base.html" %}
-{% block content %}
-<h2>Productos disponibles</h2>
+{% extends 'base.html' %}
 
-{% for producto in productos %}
-  <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
-    <h3>{{ producto.nombre }}</h3>
-    <p>{{ producto.descripcion }}</p>
-    <p><strong>Precio:</strong> ${{ producto.precio }}</p>
-    <form method="post" action="{% url 'agregar_carrito' producto.id %}">
-      {% csrf_token %}
-      <label for="cantidad">Cantidad:</label>
-      <input type="number" name="cantidad" value="1" min="1">
-      <button type="submit">Agregar al carrito</button>
-    </form>
+{% block title %}Productos{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Nuestros productos</h2>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  {% for producto in productos %}
+  <div class="col">
+    <div class="card h-100 shadow-sm">
+      {% if producto.imagen %}
+      <img src="{{ producto.imagen.url }}" class="card-img-top" alt="{{ producto.nombre }}">
+      {% endif %}
+      <div class="card-body">
+        <h5 class="card-title">{{ producto.nombre }}</h5>
+        <p class="card-text">{{ producto.descripcion|truncatewords:15 }}</p>
+        <p class="fw-bold">${{ producto.precio }}</p>
+        <a href="{% url 'detalle_producto' producto.id %}" class="btn btn-outline-primary">Ver más</a>
+      </div>
+    </div>
   </div>
-{% endfor %}
+  {% endfor %}
+</div>
 {% endblock %}

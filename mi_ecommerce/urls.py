@@ -6,4 +6,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('tienda.urls')),  # ← cambia esto por el nombre correcto de tu app
     path('accounts/login/', auth_views.LoginView.as_view(), name='login'),
+   
+
 ]

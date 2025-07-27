@@ -63,3 +63,9 @@ def finalizar_pedido(request):
         item.delete()
 
     return render(request, 'tienda/pedido_exito.html', {'pedido': pedido})
+
+@login_required
+def detalle_producto(request, producto_id):
+    producto = get_object_or_404(Producto, id=producto_id)
+    return render(request, 'tienda/detalle_producto.html', {'producto': producto})
+
