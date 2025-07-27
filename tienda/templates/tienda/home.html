@@ -1,20 +1,21 @@
-{% extends "base.html" %}
-
+{{% extends "base.html" %}
 {% block title %}Inicio{% endblock %}
-
 {% block content %}
-<div class="text-center py-5">
-  <h1 class="display-4 mb-3">¡Bienvenido a Mi Ecommerce!</h1>
-
-  <p class="lead">Hola, <strong>{{ user.username }}</strong>. Ya estás logueado.</p>
-
-  <div class="mt-4">
-    <a href="/productos/" class="btn btn-primary btn-lg me-3">
-      Ver productos
-    </a>
-    <a href="/carrito/" class="btn btn-outline-secondary btn-lg">
-      Ir al carrito
-    </a>
+<h2 class="mb-4">Productos Destacados</h2>
+<div class="row">
+  {% for producto in productos %}
+  <div class="col-6 col-md-3 mb-4">
+    <div class="card h-100">
+      {% if producto.imagen %}
+      <img src="{{ producto.imagen.url }}" class="card-img-top" alt="{{ producto.nombre }}">
+      {% endif %}
+      <div class="card-body">
+        <h5 class="card-title">{{ producto.nombre }}</h5>
+        <p class="card-text text-success">${{ producto.precio }}</p>
+        <a href="{% url 'producto_detail' producto.id %}" class="btn btn-primary w-100">Ver</a>
+      </div>
+    </div>
   </div>
+  {% endfor %}
 </div>
 {% endblock %}
