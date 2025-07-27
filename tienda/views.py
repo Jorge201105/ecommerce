@@ -17,7 +17,9 @@ def registro(request):
 
 @login_required
 def home(request):
-    return render(request, 'tienda/home.html')
+    productos = Producto.objects.all()
+    return render(request, "tienda/home.html", {"productos": productos})
+
 
 @login_required
 def listar_productos(request):

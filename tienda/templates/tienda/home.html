@@ -12,7 +12,7 @@
       <div class="card-body">
         <h5 class="card-title">{{ producto.nombre }}</h5>
         <p class="card-text text-success">${{ producto.precio }}</p>
-        <a href="{% url 'producto_detail' producto.id %}" class="btn btn-primary w-100">Ver</a>
+        <a href="{% url 'detalle_producto' producto.id %}" class="btn btn-primary w-100">Ver</a>
       </div>
     </div>
   </div>
