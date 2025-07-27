@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mi E-Commerce</title>
+</head>
+<body>
+  <nav>
+    {% if user.is_authenticated %}
+      Bienvenido, {{ user.username }} |
+      <a href="{% url 'logout' %}">Cerrar sesión</a> |
+      <a href="{% url 'listar_productos' %}">Productos</a> |
+      <a href="{% url 'ver_carrito' %}">Carrito</a>
+    {% else %}
+      <a href="{% url 'login' %}">Iniciar sesión</a> |
+      <a href="{% url 'registro' %}">Registrarse</a>
+    {% endif %}
+  </nav>
+  <hr>
+  {% block content %}{% endblock %}
+</body>
+</html>
